@@ -1,68 +1,69 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./index.css";
+import dataStore from "../../store";
 
 function Form() {
-  const [ipAdress, setIpAdress] = useState("");
-  const [location, setLocation] = useState("");
-  const [timeZone, setTimeZone] = useState("");
-  const [isp, setIsp] = useState("");
-
+  const setData = dataStore((state) => state.setData);
+  const data = dataStore((state) => state.data);
+  console.log(data);
   useEffect(() => {
     axios.get("https://api.ipify.org?format=json").then((res) => {
-      setIpAdress(res.data.ip);
+      axios
+        .get(
+          `https://geo.ipify.org/api/v2/country,city?apiKey=${
+            import.meta.env.VITE_GEOLOCATION_API_KEY
+          }&ipAddress=${res.data.ip}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          setData(res.data);
+        });
     });
+  }, []);
+
+  const handleChange = (e) => {
+    setData({ ...data, ip: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .get(
         `https://geo.ipify.org/api/v2/country,city?apiKey=${
           import.meta.env.VITE_GEOLOCATION_API_KEY
-        }&ipAddress=${ipAdress}`
+        }&ipAddress=${data.ip}`
       )
       .then((res) => {
         console.log(res.data);
-        setLocation(
-          `${res.data.location.region}, ${res.data.location.country}`
-        );
-        setTimeZone(`UTC ${res.data.location.timezone}`);
-        setIsp(res.data.isp);
+        setData(res.data);
       });
-  }, [ipAdress]);
+  };
+
+  if (!data) return <div>Loading...</div>;
 
   return (
     <div className="form">
       <div className="search-v">
-        <input
-          type="text"
-          className="ip-search"
-          placeholder="Search for any IP address or domain"
-        />
-        <button className="search-btn">
-          <img src="assets/icon-arrow.svg" alt="search" />
-        </button>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="ip-search"
+            placeholder="Search for any IP address or domain"
+            value={data.ip}
+            onChange={handleChange}
+          />
+          <button
+            className="search-btn"
+            type="submit"
+            onClick={console.log("clicked")}
+          >
+            <img src="assets/icon-arrow.svg" alt="search" />
+          </button>
+        </form>
       </div>
       <br />
       <br />
-      <div className="card">
-        <div>
-          <label>IP ADDRESS</label>
-          <p>{ipAdress}</p>
-        </div>
-        <div className="line"></div>
-        <div className="card-part">
-          <label>LOCATION</label>
-          <p>{location}</p>
-        </div>
-        <div className="line"></div>
-        <div className="card-part">
-          <label>TIMEZONE</label>
-          <p>{timeZone}</p>
-        </div>
-        <div className="line"></div>
-        <div className="card-part">
-          <label>ISP</label>
-          <p>{isp}</p>
-        </div>
-      </div>
     </div>
   );
 }
