@@ -1,0 +1,7 @@
+.header {
+  background-image: url("assets/background.png");
+  background-size: 200vh;
+  background-repeat: no-repeat;
+  height: 250px;
+  text-align: center;
+}
