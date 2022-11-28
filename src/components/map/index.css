@@ -1,4 +1,8 @@
 .leaflet-container {
-  height: 250px;
-  width: 250px;
+  height: 75vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
 }

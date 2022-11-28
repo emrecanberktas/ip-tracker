@@ -11,4 +11,5 @@
   justify-content: space-around;
   align-items: flex-start;
   padding: 30px;
+  z-index: 1;
 }

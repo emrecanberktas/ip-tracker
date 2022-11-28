@@ -1,25 +1,12 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+#root {
+  height: 100vh;
 }
 .app {
-  background-image: url("assets/background.png");
-  height: 250px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  height: 100%;
 }
 h1 {
   color: white;
   font-size: 50px;
   text-align: center;
-  padding-top: 50px;
   font-family: "Mukta", sans-serif;
-  margin-top: 1em;
 }

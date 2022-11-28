@@ -1,0 +1,15 @@
+:root {
+  --main-font-family: "Mukta", sans-serif;
+  --input-font-size: 18px;
+  --font-size: 30px;
+  --very-dark-gray: hsl(0, 0%, 17%);
+  --dark-gray: hsl(0, 0%, 59%);
+  --heavy-font-weight: 700;
+  --medium-font-weight: 500;
+  --light-font-weight: 400;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
