@@ -1,13 +1,11 @@
-import { useState } from "react";
-import Form from "./components/form";
 import Map from "./components/map";
 import "./App.css";
+import Header from "./components/header";
 
 function App() {
   return (
     <div className="app">
-      <h1>IP Adress Tracker</h1>
-      <Form />
+      <Header />
       <Map />
     </div>
   );
