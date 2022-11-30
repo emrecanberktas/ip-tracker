@@ -1,5 +1,5 @@
-.card {
-  min-width: 1000px;
+.card-inside {
+  min-width: 1100px;
   max-width: 1400px;
   height: 140px;
   background-color: #fff;
@@ -11,5 +11,13 @@
   justify-content: space-around;
   align-items: flex-start;
   padding: 30px;
+  position: absolute;
   z-index: 1;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8vh;
 }
