@@ -6,22 +6,10 @@ import dataStore from "../../store";
 function Form() {
   const setData = dataStore((state) => state.setData);
   const data = dataStore((state) => state.data);
-  useEffect(() => {
-    axios.get("https://api.ipify.org?format=json").then((res) => {
-      axios
-        .get(
-          `https://geo.ipify.org/api/v2/country,city?apiKey=${
-            import.meta.env.VITE_GEOLOCATION_API_KEY
-          }&ipAddress=${res.data.ip}`
-        )
-        .then((res) => {
-          setData(res.data);
-        });
-    });
-  }, []);
+  const [input, setInput] = useState(data.ip);
 
   const handleChange = (e) => {
-    setData({ ...data, ip: e.target.value });
+    setInput(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -30,24 +18,22 @@ function Form() {
       .get(
         `https://geo.ipify.org/api/v2/country,city?apiKey=${
           import.meta.env.VITE_GEOLOCATION_API_KEY
-        }&ipAddress=${data.ip}`
+        }&ipAddress=${input}`
       )
       .then((res) => {
         setData(res.data);
       });
   };
 
-  if (!data) return <div>Loading...</div>;
-
   return (
     <div className="form">
-      <div className="search-v">
-        <form onSubmit={handleSubmit}>
+      <div>
+        <form className="search-bar" onSubmit={handleSubmit}>
           <input
             type="text"
             className="ip-search"
             placeholder="Search for any IP address or domain"
-            value={data.ip}
+            value={input}
             onChange={handleChange}
           />
           <button className="search-btn" type="submit">

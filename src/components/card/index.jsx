@@ -4,7 +4,6 @@ import "./index.css";
 
 function Card() {
   const data = dataStore((state) => state.data);
-  if (!data) return <div>Loading..</div>;
   return (
     <div className="card">
       <div className="card-inside">
