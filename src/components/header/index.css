@@ -2,6 +2,13 @@
   background-image: url("/background.png");
   background-size: 200vh;
   background-repeat: no-repeat;
-  height: 25vh;
+  height: 30vh;
   text-align: center;
+  padding-top: 50px;
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    padding: 20px 10px 0px 10px;
+  }
 }
