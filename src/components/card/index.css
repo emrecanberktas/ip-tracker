@@ -1,5 +1,6 @@
 .card-inside {
-  min-width: 1100px;
+  min-width: 1000px;
+  width: 1200px;
   max-width: 1400px;
   height: 140px;
   background-color: #fff;
