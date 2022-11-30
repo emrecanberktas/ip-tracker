@@ -51,7 +51,7 @@ function Form() {
             onChange={handleChange}
           />
           <button className="search-btn" type="submit">
-            <img src="assets/icon-arrow.svg" alt="search" />
+            <img src="icon-arrow.svg" alt="search" />
           </button>
         </form>
       </div>
