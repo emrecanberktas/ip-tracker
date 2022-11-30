@@ -6,7 +6,6 @@ import dataStore from "../../store";
 function Form() {
   const setData = dataStore((state) => state.setData);
   const data = dataStore((state) => state.data);
-  console.log(data);
   useEffect(() => {
     axios.get("https://api.ipify.org?format=json").then((res) => {
       axios
@@ -16,7 +15,6 @@ function Form() {
           }&ipAddress=${res.data.ip}`
         )
         .then((res) => {
-          console.log(res.data);
           setData(res.data);
         });
     });
@@ -35,7 +33,6 @@ function Form() {
         }&ipAddress=${data.ip}`
       )
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       });
   };
@@ -53,11 +50,7 @@ function Form() {
             value={data.ip}
             onChange={handleChange}
           />
-          <button
-            className="search-btn"
-            type="submit"
-            onClick={console.log("clicked")}
-          >
+          <button className="search-btn" type="submit">
             <img src="assets/icon-arrow.svg" alt="search" />
           </button>
         </form>
