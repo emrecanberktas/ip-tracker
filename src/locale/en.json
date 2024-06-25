@@ -1,0 +1,12 @@
+{
+  "translation" : {
+    "title":"IP Address Tracker",
+    "input": "Search for any IP address or domain",
+    "card": {
+      "ip": "IP ADDRESS",
+      "location" : "LOCATION",
+      "timezone": "TIME ZONE",
+      "isp": "ISP"
+    }
+  }
+}

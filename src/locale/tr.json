@@ -1,0 +1,12 @@
+{
+  "çeviri" : {
+    "title": "IP Adres İzleyicisi",
+    "input": "Herhangi bir IP adresi veya etki alanı arayın",
+    "kart": {
+      "ip": "IP ADRESİ",
+      "konum" : "KONUM",
+      "zaman dilimi": "ZAMAN BÖLGESİ",
+      "isp": "ISP"
+    }
+  }
+}

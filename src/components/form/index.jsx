@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./index.css";
 import dataStore from "../../store";
+import {useTranslation} from "react-i18next";
 
 function Form() {
+  const {t} = useTranslation()
   const setData = dataStore((state) => state.setData);
   const data = dataStore((state) => state.data);
   const [input, setInput] = useState(data.ip);
@@ -32,7 +34,7 @@ function Form() {
           <input
             type="text"
             className="ip-search"
-            placeholder="Search for any IP address or domain"
+            placeholder={t("input")}
             value={input}
             onChange={handleChange}
           />

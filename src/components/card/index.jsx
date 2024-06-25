@@ -1,29 +1,31 @@
 import React from "react";
 import dataStore from "../../store";
 import "./index.css";
+import {useTranslation} from "react-i18next";
 
 function Card() {
+  const {t} = useTranslation()
   const data = dataStore((state) => state.data);
   return (
     <div className="card">
       <div className="card-inside">
         <div>
-          <label>IP ADDRESS</label>
+          <label>{t("card.ip")}</label>
           <p>{data.ip}</p>
         </div>
         <div className="line"></div>
         <div className="card-part">
-          <label>LOCATION</label>
+          <label>{t("card.location")}</label>
           <p>{`${data.location.region},${data.location.country}`}</p>
         </div>
         <div className="line"></div>
         <div className="card-part">
-          <label>TIMEZONE</label>
+          <label>{t("card.timezone")}</label>
           <p>{data.location.timezone}</p>
         </div>
         <div className="line"></div>
         <div className="card-part">
-          <label>ISP</label>
+          <label>{t("card.isp")}</label>
           <p>{data.isp}</p>
         </div>
       </div>
